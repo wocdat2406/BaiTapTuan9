@@ -10,21 +10,26 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-center align-items-center g-2">
+            <div class="col-12 border border-1">
                 <img src="../img/website.png" class="w-100" alt="">
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-center align-items-center g-2">
+            <div class="col-12 border border-1">
                 <ul class="nav">
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="#">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Đăng ký</a></li>
+                    
+                    <li class="nav-item">
+                        <!-- data-bs-toggle="modal": Bootstrap gắn cho nó chức năng mở modal. -->
+                        <!-- data-bs-target="#modalId": Chỉ định ID của modal cần mở. -->
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalID">Đăng ký</a>
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="row justify-content-center align-items-center g-2">
-            <div class="col-12">
+            <div class="col-12 border border-1">
                 <h2 class="text-center">LIST OF MEMBER</h2>
                 <div class="table-responsive">
                     <table class="table table-primary">
@@ -48,6 +53,30 @@
                 </div>
                 
             </div>
+        </div>
+    </div>
+
+    <!-- Modal Body-->
+    <!-- 
+        fade: hiệu ứng mờ mờ khi mở/đóng modal. 
+        id="modalId": rất quan trọng. Đây chính là ID mà button/anchor bên ngoài trỏ tới bằng data-bs-target="#modalId". Phải trùng. 
+        role="dialog": thuộc tính trợ năng (accessibility), báo đây là hộp thoại.
+        aria-labelledby="modalTitleId": nói rằng tiêu đề của modal nằm ở phần tử có id là modalTitleId (ở dưới có).
+        aria-hidden="true": lúc đầu modal ẩn. 
+
+        modal-dialog: để định dạng khung chính của hộp thoại
+        role="document": cho screen reader biết đây là nội dung chính của hộp thoại.
+
+        h5.modal-title: tiêu đề, id = modalTitleId → trùng với aria-labelledby ở ngoài → đúng chuẩn.
+    -->
+    <div class="modal fade" id="modalID" tabindex="-1" role="dialog" aria-labelledby="modalTitleID" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>THÔNG TIN HỌC VIỆN</h5>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>
