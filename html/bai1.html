@@ -58,6 +58,7 @@
 
     <!-- Modal Body-->
     <!-- 
+
         fade: hiệu ứng mờ mờ khi mở/đóng modal. 
         id="modalId": rất quan trọng. Đây chính là ID mà button/anchor bên ngoài trỏ tới bằng data-bs-target="#modalId". Phải trùng. 
         role="dialog": thuộc tính trợ năng (accessibility), báo đây là hộp thoại.
@@ -67,16 +68,71 @@
         modal-dialog: để định dạng khung chính của hộp thoại
         role="document": cho screen reader biết đây là nội dung chính của hộp thoại.
 
+        HEADER
         h5.modal-title: tiêu đề, id = modalTitleId → trùng với aria-labelledby ở ngoài → đúng chuẩn.
+        class="btn-close": nút dấu X kiểu Bootstrap.
+        data-bs-dismiss="modal": rất quan trọng → nhấn vào là Bootstrap tự ẩn modal, không cần JS.
+        aria-label="Close": để screen reader đọc được.
+
+        BODY
+        container-fluid là class sẵn có của Bootstrap dùng để bao nội dung chiếm toàn bộ chiều rộng.
+        col-form-label: giúp label căn giữa theo chiều dọc và thẳng hàng với ô nhập trong form dạng lưới (grid).
+        onblur="ktraten();": khi người dùng rời khỏi ô nhập (mất focus), hàm ktraten() sẽ được gọi để kiểm tra hoặc xử lý dữ liệu ô đó.
     -->
-    <div class="modal fade" id="modalID" tabindex="-1" role="dialog" aria-labelledby="modalTitleID" aria-hidden="true">
+    <div class="modal fade" id="modalID" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                <!-- Header -->
                 <div class="modal-header">
-                    <h5>THÔNG TIN HỌC VIỆN</h5>
+                    <h5 class="modal-title" id="modalTitleId">THÔNG TIN HỌC VIÊN</h5>
+                    <span id="thongbao"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
 
+                <!-- Body -->
+                 <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="container">
+                            <form>
+                                <div class="mb-3 row">
+                                    <label class="col-4 col-form-label">Họ và tên</label>
+                                    <div class="col-8">
+                                        <input type="text" name="txtht" id="txtht" class="form-control" onblur="">
+                                        <span id="err1" class="text-danger">*</span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <label class="col-4 col-form-label">Số điện thoại</label>
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" name="txtsdt" id="txtsdt" onblur="">
+                                        <span id="err2" class="text-danger">*</span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <label class="col-4 col-form-label">Ngày sinh</label>
+                                    <div class="col-8">
+                                        <input type="date" name="txtns" id="txtns" class="form-control">
+                                        <span id="err3" class="text-danger">*</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label for="">Địa chỉ</label>
+                                </div>
+                                <div class="row"></div>
+                                <div class="row"></div>
+                                <div class="row"></div>
+                                <div class="row"></div>
+                                <div class="row"></div>
+                                <div class="row"></div>
+                            </form>
+                        </div>
+                    </div>
+                 </div>
+                
+            </div>
         </div>
     </div>
 </body>
