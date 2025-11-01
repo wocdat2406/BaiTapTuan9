@@ -78,6 +78,9 @@
         container-fluid là class sẵn có của Bootstrap dùng để bao nội dung chiếm toàn bộ chiều rộng.
         col-form-label: giúp label căn giữa theo chiều dọc và thẳng hàng với ô nhập trong form dạng lưới (grid).
         onblur="ktraten();": khi người dùng rời khỏi ô nhập (mất focus), hàm ktraten() sẽ được gọi để kiểm tra hoặc xử lý dữ liệu ô đó.
+
+        form-select: áp dụng kiểu Bootstrap cho thẻ <select> — thêm viền, bo góc, padding, và chiều rộng 100%.
+        form-select-lg: đặt kích thước lớn hơn mặc định (tăng chiều cao và font chữ).       
     -->
     <div class="modal fade" id="modalID" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -90,7 +93,7 @@
                 </div>
 
                 <!-- Body -->
-                 <div class="modal-body">
+                <div class="modal-body">
                     <div class="container-fluid">
                         <div class="container">
                             <form>
@@ -118,19 +121,57 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <label for="">Địa chỉ</label>
+                                <div class="mb-3 row">
+                                    <label class="col-4 col-form-label">Địa chỉ</label>
+                                    <div class="col-8">
+                                        <input type="text" name="txtdc" id="txtdc" class="form-control">
+                                    </div>
                                 </div>
-                                <div class="row"></div>
-                                <div class="row"></div>
-                                <div class="row"></div>
-                                <div class="row"></div>
+
+                                <div class="mb-3 row">
+                                    <label class="col-4 col-form-label">Bạn muốn tham gia khóa nào?</label>
+                                    <div class="col-8 mb-3">
+                                        <select class="form-select" name="" id="listkh">
+                                            <option value="5,000,000">2 tuần</option>
+                                            <option value="8,000,000">4 tuần</option>
+                                            <option value="9,000,000">6 tuần</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <label class="col-4 col-form-label">Học phí</label>
+                                    <div class="col-8">
+                                        <input type="text" name="txthp" id="txthp" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <label class="col-4 col-form-label">Ảnh đại diện</label>
+                                    <div class="col-8">
+                                        <input type="file" name="txtadc" id="txtadc" class="form-control">
+                                        <span id="err4" class="text-danger">*</span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <!-- d-grid: chuyển phần tử sang chế độ hiển thị dạng lưới (grid layout) để dễ sắp xếp và căn chỉnh các phần tử con. -->
+                                    <div class="col-12 d-grid">
+                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                            Lưu
+                                        </button>
+                                    </div>
+                                </div>
                                 <div class="row"></div>
                                 <div class="row"></div>
                             </form>
                         </div>
                     </div>
-                 </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
                 
             </div>
         </div>
