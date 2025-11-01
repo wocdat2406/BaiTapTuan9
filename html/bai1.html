@@ -100,7 +100,7 @@
                                 <div class="mb-3 row">
                                     <label class="col-4 col-form-label">Họ và tên</label>
                                     <div class="col-8">
-                                        <input type="text" name="txtht" id="txtht" class="form-control" onblur="">
+                                        <input type="text" name="txtht" id="txtht" class="form-control" onblur="ktraten()">
                                         <span id="err1" class="text-danger">*</span>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                                 <div class="mb-3 row">
                                     <label class="col-4 col-form-label">Số điện thoại</label>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="txtsdt" id="txtsdt" onblur="">
+                                        <input type="text" class="form-control" name="txtsdt" id="txtsdt" onblur="ktradt()">
                                         <span id="err2" class="text-danger">*</span>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@
                                 <div class="mb-3 row">
                                     <label class="col-4 col-form-label">Bạn muốn tham gia khóa nào?</label>
                                     <div class="col-8 mb-3">
-                                        <select class="form-select" name="" id="listkh">
+                                        <select class="form-select" name="" id="listkh" onchange="Chonkh()">
                                             <option value="5,000,000">2 tuần</option>
                                             <option value="8,000,000">4 tuần</option>
                                             <option value="9,000,000">6 tuần</option>
@@ -172,9 +172,154 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
-                
             </div>
         </div>
     </div>
+
+    <script>
+        /*
+            ^ : Bắt đầu chuỗi (không cho ký tự trước đó).
+
+            [A-Z]{1} : Ký tự đầu tiên phải là chữ cái in hoa (A–Z).
+
+            [a-z]+ : Sau đó là ít nhất 1 chữ thường (a–z).
+            => tức là tạo thành một từ kiểu: Nguyen, Tran, An, ...
+
+            (\s[A-Z]{1}[a-z]+)* : Cả cụm này là phần lặp lại (0 hoặc nhiều lần) cho các từ tiếp theo.
+
+                \s : một khoảng trắng (space).
+                [A-Z]{1} : từ tiếp theo cũng bắt đầu bằng chữ in hoa.
+                [a-z]+: theo sau là ít nhất 1 chữ thường.
+                * ở ngoài ngoặc: cho phép có hoặc không có từ tiếp theo.
+                => nghĩa là bạn có thể nhập: Nguyen Van A (nhiều từ, mỗi từ viết hoa đầu).
+
+            $ : Kết thúc chuỗi (không cho ký tự thừa ở cuối).
+        */
+        function ktraten(){
+            var ht=document.getElementById("txtht").value;
+            var ten=/^[A-Z]{1}[a-z]+(\s[A-Z]{1}[a-z]+)*$/;
+            if(ten.test(ht)){
+                document.getElementById("err1").innerHTML="*";
+                return true;
+            }
+            else{
+                document.getElementById("err1").innerHTML="phai nhap đúng mẫu: Nguyen Thi Hue";
+                return false;
+            }
+        }
+
+        function ktradt(){
+            var sdt=document.getElementById("txtsdt").value;
+            // \d: số nào cũng được
+            var dt=/^0[2-9]{1}\d{8}$/;  
+            if(dt.test(sdt)){
+                document.getElementById("err2").innerHTML="*"
+                return true;
+            }else{
+                document.getElementById("err2").innerHTML="nhap đúng mẫu: 0xxxxxxxxx"
+                return false;
+            }
+        }
+
+        var i = 1;
+        function Luu() {
+            if(!ktraten()||!ktradt()){
+                document.getElementById("thongbao").innerHTML="nhap đầy đủ thông tin"
+                return false
+            }
+
+            var ht, sdt, gt, dc, ns, kh, hp;
+            var nn = new Array(); // nhieu ngon ngu: Array
+
+            // ho ten: textbox
+            ht = document.getElementById("txtht").value;
+
+            //gioitinh : radio 
+            // duyệt radio  lấy value
+            var rad = document.querySelectorAll("input[type='radio']");
+            rad.forEach(function(ch) {
+                if (ch.checked) {
+                    gt = ch.value; // radio
+                }
+            })
+
+            // ngon ngữ: checkbox --> lấy value
+            // duyệt checkbox
+
+            var chk = document.querySelectorAll("input[type='checkbox']");
+            chk.forEach(function(ch) {
+                if (ch.checked) {
+                    nn.push(ch.value);
+                }
+            })
+
+
+            // so dien thoai: textbox
+            sdt = document.getElementById("txtsdt").value;
+            //ngay sinh : date
+            ns = document.getElementById("txtns").value;
+            // dia chi : textbox
+            dc = document.getElementById("txtdc").value;
+
+            // hocphi: textbox  -- > value cua option select lstkh
+            hp = document.getElementById("lstkh").value;
+
+            // hp = document.getElementById("txthp").value;
+
+            // khoa hoc: select : text cua option
+            // lay text cua option select lstkh
+            var sel = document.getElementById("lstkh");
+            var kh = sel.options[sel.selectedIndex].text;
+
+            //luu bang
+            // có bảng --> tạo row insertRow() --> tạo cột: insertCell()
+            var tbl = document.getElementById("tblds");
+
+            // tạo row
+            var row1 = tbl.insertRow(i);
+
+            var cot1 = row1.insertCell(0);
+            var cot2 = row1.insertCell(1);
+            var cot3 = row1.insertCell(2);
+            var cot4 = row1.insertCell(3); // ngon ngu checkbox
+
+
+            var cot5 = row1.insertCell(4);
+            var cot6 = row1.insertCell(5);
+            var cot7 = row1.insertCell(6);
+            var cot8 = row1.insertCell(7);
+            var cot9 = row1.insertCell(8);
+
+
+
+            cot1.innerHTML = i;
+            cot2.innerHTML = ht;
+            cot3.innerHTML = gt;
+            cot4.innerHTML = nn;
+            cot5.innerHTML = sdt;
+            cot6.innerHTML = ns;
+            cot7.innerHTML = dc;
+            cot8.innerHTML = kh;
+            cot9.innerHTML = hp;
+
+
+
+
+
+
+
+            i++;
+
+        }
+
+        function Chonkh() {
+            // alert("BBB");
+
+            // lay value cau lstkh --> xuat ra txthp
+            var hp = document.getElementById("lstkh").value;
+            document.getElementById("txthp").value = hp;
+
+        }
+    </script>
 </body>
 </html>
