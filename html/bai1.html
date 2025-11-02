@@ -15,9 +15,10 @@
                 <img src="../img/website.png" class="w-100" alt="">
             </div>
         </div>
+
         <div class="row justify-content-center align-items-center g-2">
             <div class="col-12 border border-1">
-                <ul class="nav">
+                <ul class="nav justify-content-left">
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="#">Trang chủ</a></li>
                     
                     <li class="nav-item">
@@ -28,11 +29,12 @@
                 </ul>
             </div>
         </div>
+
         <div class="row justify-content-center align-items-center g-2">
             <div class="col-12 border border-1">
                 <h2 class="text-center">LIST OF MEMBER</h2>
                 <div class="table-responsive">
-                    <table class="table table-primary">
+                    <table class="table table-primary" id="tblds">
                         <thead>
                             <tr>
                                 <th scope="col">STT</th>
@@ -100,15 +102,31 @@
                                 <div class="mb-3 row">
                                     <label class="col-4 col-form-label">Họ và tên</label>
                                     <div class="col-8">
-                                        <input type="text" name="txtht" id="txtht" class="form-control" onblur="ktraten()">
+                                        <input type="text" name="txtht" id="txtht" class="form-control" onblur="ktraten();">
                                         <span id="err1" class="text-danger">*</span>
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
+                                    <label class="col-4 col-form-label">Gioi tinh</label>
+                                    <div class="col-8">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gioitinh" id="" value="Nam" />
+                                            <label class="form-check-label">Nam</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gioitinh" id="" value="Nữ" />
+                                            <label class="form-check-label">Nu</label>
+                                        </div>
+
+
+                                    </div>
+                                </div> 
+
+                                <div class="mb-3 row">
                                     <label class="col-4 col-form-label">Số điện thoại</label>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="txtsdt" id="txtsdt" onblur="ktradt()">
+                                        <input type="text" class="form-control" name="txtsdt" id="txtsdt" onblur="ktradt();">
                                         <span id="err2" class="text-danger">*</span>
                                     </div>
                                 </div>
@@ -157,7 +175,7 @@
                                 <div class="mb-3 row">
                                     <!-- d-grid: chuyển phần tử sang chế độ hiển thị dạng lưới (grid layout) để dễ sắp xếp và căn chỉnh các phần tử con. -->
                                     <div class="col-12 d-grid">
-                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                        <button type="button" class="btn btn-success" onclick="Luu()" data-bs-dismiss="modal">
                                             Lưu
                                         </button>
                                     </div>
@@ -261,14 +279,14 @@
             // dia chi : textbox
             dc = document.getElementById("txtdc").value;
 
-            // hocphi: textbox  -- > value cua option select lstkh
-            hp = document.getElementById("lstkh").value;
+            // hocphi: textbox  -- > value cua option select listkh
+            hp = document.getElementById("listkh").value;
 
             // hp = document.getElementById("txthp").value;
 
             // khoa hoc: select : text cua option
-            // lay text cua option select lstkh
-            var sel = document.getElementById("lstkh");
+            // lay text cua option select listkh
+            var sel = document.getElementById("listkh");
             var kh = sel.options[sel.selectedIndex].text;
 
             //luu bang
@@ -315,8 +333,8 @@
         function Chonkh() {
             // alert("BBB");
 
-            // lay value cau lstkh --> xuat ra txthp
-            var hp = document.getElementById("lstkh").value;
+            // lay value cau listkh --> xuat ra txthp
+            var hp = document.getElementById("listkh").value;
             document.getElementById("txthp").value = hp;
 
         }
