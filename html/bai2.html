@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Bai 2</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/bai2.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-md-12">
+            <header>
+                <img src="../img/banner-5.png">
+            </header>
+        </div>
+        <div class="col-md-12">
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="lnkDangNhap">Đăng nhập</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="lnkMoTourMoi">Mở tour mới</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-12">
+            <section class="table-responsive">
+                <h4 style="text-align:center;">DANH SÁCH TOUR - DU LỊCH VIỆT</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã Tour</th>
+                            <th>Hành trình</th>
+                            <th>Ngày khởi hành</th>
+                            <th>Thời gian</th>
+                            <th>Giá tour</th>
+                            <th>Ảnh đại diện</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 style="text-align: center;">THÔNG TIN TOUR</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <div id="error" class="text-danger" style="text-align: center;"></div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtMaTour" class="col-md-4 col-form-label text-end">Mã tour</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="txtMaTour" placeholder="Nhập theo mẫu: XXX-XXX-mm-yyyy">
+                                <span id="tbMaTour" class="text-danger">*</span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtDiemDen" class="col-md-4 col-form-label text-end">Hành trình</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="txtDiemDen" placeholder="Nhập hành trình">
+                                <span id="tbDiemDen" class="text-danger">*</span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtNgayKH" class="col-md-4 col-form-label text-end">Ngày khởi hành</label>
+                            <div class="col-md-8">
+                                <input type="date" class="form-control" id="txtNgayKH">
+                                <span id="tbNgayKH" class="text-danger">*</span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtThoiGian" class="col-md-4 col-form-label text-end">Thời gian</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="txtThoiGian" placeholder="Nhập thời gian đi (4 ngày 3 đêm)">
+                                <span id="tbThoiGian" class="text-danger">*</span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtGiaTour" class="col-md-4 col-form-label text-end">Giá Tour</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="txtGiaTour" placeholder="Số > 0">
+                                <span id="tbGiaTour" class="text-danger">*</span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtAnhDD" class="col-md-4 col-form-label text-end">Ảnh đại diện</label>
+                            <div class="col-md-8">
+                                <input type="file" class="form-control" id="txtAnhDD" accept=".jpg, .gif, .png">
+                                <span id="tbAnhDD" class="text-danger">*</span>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnLuu" class="btn btn-success btn-block">Lưu</button>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bai2.js"></script>
+</body>
+
+</html>
